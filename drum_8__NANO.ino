@@ -7,7 +7,7 @@
 MIDI_CREATE_DEFAULT_INSTANCE();
 byte patchnum = 0;
 
-#define LED 02
+#define LED 10
 
 #define PIEZ_CNT 8
 #define DRUM_CHANEL 8
@@ -62,9 +62,7 @@ void noteOff(int chan, int note, int velocity) {
 
 
 void setup() {
-pinMode(2, INPUT_PULLUP);
-pinMode(3, INPUT_PULLUP);
-MIDI.begin(MIDI_CHANNEL_OMNI);
+
   lcd.begin(16,2);
   Serial.begin(115200); 
   //Serial.begin(31250);
@@ -101,6 +99,9 @@ MIDI.begin(MIDI_CHANNEL_OMNI);
   
   ADCSRA |= (1 << ADPS2);                     
   ADCSRA &= ~ ((1 << ADPS1) | (1 << ADPS0));  
+pinMode(2, INPUT_PULLUP);
+pinMode(3, INPUT_PULLUP);
+MIDI.begin(MIDI_CHANNEL_OMNI);
 }
 
 
